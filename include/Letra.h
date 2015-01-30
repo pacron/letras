@@ -8,15 +8,15 @@ using namespace std;
 
 
 /**
-	@brief TDA Letra
-
-	El TDA Letra representa una letra, junto con las repeticiones que se dan de esa letra y la puntuación
-	que lleva asociada cada una de estas letras.
-
-	El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
-	en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
-	asteriscos...
-
+ *	@brief TDA Letra
+ *
+ *	El TDA Letra representa una letra, junto con las repeticiones que se dan de esa letra y la puntuación
+ *	que lleva asociada cada una de estas letras.
+ *
+ *	El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
+ *	en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
+ *	asteriscos...
+ *
 */
 class Letra {
 private:
