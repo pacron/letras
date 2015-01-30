@@ -35,8 +35,6 @@ int main(int argc, char * argv[]){
   Diccionario diccionario;
   palabras >> diccionario;
 
-  map <char,int> puntuaciones;
-
   // Cargamos el conjunto de letras
   cout << "Cargando letras..." << endl;
   ConjuntoLetras conjunto_letras;
@@ -45,6 +43,7 @@ int main(int argc, char * argv[]){
   // Creamos la bolsa de letras a partir del conjunto
   BolsaLetras bolsa(conjunto_letras);
 
+  map <char,int> puntuaciones;
   ConjuntoLetras::iterator it_conj = conjunto_letras.begin(), end_conj = conjunto_letras.end();
   if (argv[4][0] == 'P'){
 
@@ -61,9 +60,6 @@ int main(int argc, char * argv[]){
     }    
   }
 
-
-  string user_solution;
-
   char si_o_no = 'S';
 
   while (si_o_no == 'S' || si_o_no == 's'){
@@ -78,7 +74,7 @@ int main(int argc, char * argv[]){
     string palabra_usuario;
     cout << "¿Cual es tu solución? ";
     cin >> palabra_usuario;
-    int puntuacion_usuario = 0;
+    int puntuacion_usuario = 0, puntuacion_maxima;
 
     if (diccionario.existe(palabra_usuario)){
       for (int i = 0; i < palabra_usuario.size(); ++i){
@@ -90,13 +86,15 @@ int main(int argc, char * argv[]){
       cout << "Tu puntuación es: " << puntuacion_usuario << endl;
     }
     else
-      cout << "Deja de inventarte palabras" << endl;
+      cout << "Esta palabra no se encuentra en el diccionario" << endl;
 
     cout << "Mis soluciones son: " << endl;
-    vector<string> best_words = diccionario.obtenerPalabrasMejorPuntuacion(letras, puntuaciones);
+    vector<string> best_words = diccionario.obtenerPalabrasMejorPuntuacion(letras, puntuaciones, puntuacion_maxima);
     for (int i = 0; i < best_words.size(); ++i){
       cout << best_words[i] << endl;
     }
+
+    cout << "La puntuacion de estas palabras es: " << puntuacion_maxima << endl;
     cout << "¿Quieres seguir jugando? [S|N]: ";
     cin >> si_o_no;
 

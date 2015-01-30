@@ -1,5 +1,5 @@
 CC = g++
-CPPFLAGS = -Wall -g -I$(INCLUDE) 
+CPPFLAGS = -Wall -g -I$(INCLUDE) -I$(SRC) 
 SRC = ./src
 INCLUDE = ./include
 OBJ = ./obj

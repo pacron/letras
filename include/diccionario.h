@@ -60,7 +60,10 @@ private:
 		 * @brief Constructor por defecto de la struct info				
 		*/
 
-		info(){}
+		info(){
+			this->letra = 0;
+			this->valida = false;
+		}
 	};
 
 	ArbolGeneral<info> palabras;
@@ -151,7 +154,7 @@ public:
 	 *	@param puntuador El elemento que dará una puntuación determinada a las palabras
 	 *	@return un vector con las palabras pedidas
 	 */
-	vector<string> obtenerPalabrasMejorPuntuacion(const vector<Letra>& letters, map <char,int> puntuaciones);
+	vector<string> obtenerPalabrasMejorPuntuacion(const vector<Letra>& letters, map <char,int> puntuaciones, int &mejor_puntuacion);
 
 	friend ostream& operator<<(ostream &out, const Diccionario &d);
 	friend istream& operator>>(istream &in, Diccionario &d);
