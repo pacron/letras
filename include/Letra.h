@@ -14,20 +14,20 @@ using namespace std;
 * asociada.
 */
 /**
-  * @page repConjunto Rep del TDA Arbol General
-  *
-  * @section invConjunto Invariante de la representación
-  *
-  * Una letra debe representar un caracter alfabético del alfabeto
-  * en el que se esté jugando, y no puede contener otro tipo de 
-  * caracter.
-  *
-  * @section faConjunto Función de abstracción
-  *
-  * Cada instancia de este TDA contiene un caracter alfabético,
-  * con un número de repeticiones asociado y la puntuación que 
-  * dicha letra recibe en un juego similar al scrabble.
-  */
+* @page repConjunto Rep del TDA Arbol General
+*
+* @section invConjunto Invariante de la representación
+*
+* Una letra debe representar un caracter alfabético del alfabeto
+* en el que se esté jugando, y no puede contener otro tipo de 
+* caracter.
+*
+* @section faConjunto Función de abstracción
+*
+* Cada instancia de este TDA contiene un caracter alfabético,
+* con un número de repeticiones asociado y la puntuación que 
+* dicha letra recibe en un juego similar al scrabble.
+*/
 class Letra {
 private:
 	char letra;	
