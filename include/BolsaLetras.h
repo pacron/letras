@@ -8,16 +8,16 @@
 using namespace std;
 
 /**
-   @brief T.D.A. BolsaLetras
-   
-   El tipo de dato abstracto BolsaLetras obtiene un vector en que se introduciden
-   objetos de la clase Letra de un conunto de letras en función de la probabilidad
-   que tenga cada letra de salir
-
-   El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
-   en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
-   asteriscos... 
-   
+ *  @brief T.D.A. BolsaLetras
+ *  
+ *  El tipo de dato abstracto BolsaLetras obtiene un vector en que se introduciden
+ *  objetos de la clase Letra de un conunto de letras en función de la probabilidad
+ *  que tenga cada letra de salir
+ *
+ *  El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
+ *  en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
+ *  asteriscos... 
+ *  
 */
 
 class BolsaLetras {

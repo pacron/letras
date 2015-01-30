@@ -8,15 +8,15 @@
 using namespace std;
 
 /**
-   @brief T.D.A. CojuntoLetras
-   
-   El tipo de dato abstracto ConjuntoLetras representa una colección de objetos de la clase Letra, en que
-   aparte del carácter que representa cada letra, tenemos asociado el número de veces que aparece y su puntuación
-   en el caso de jugar con puntuación.
-
-   El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
-   en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
-   asteriscos...  
+ *  @brief T.D.A. CojuntoLetras
+ *  
+ *  El tipo de dato abstracto ConjuntoLetras representa una colección de objetos de la clase Letra, en que
+ *  aparte del carácter que representa cada letra, tenemos asociado el número de veces que aparece y su puntuación
+ *  en el caso de jugar con puntuación.
+ *
+ *  El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
+ *  en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
+ *  asteriscos...  
 */
 class ConjuntoLetras {
 private:
