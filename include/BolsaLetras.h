@@ -10,10 +10,14 @@ using namespace std;
 /**
    @brief T.D.A. BolsaLetras
    
-   El tipo de dato abstracto BolsaLetras permite obtener vectores de letras aleatorias
-   a partir de un ConjuntoLetras en el que se especifican las probabiliades de sacar
-   cada una de tales letras.
-  
+   El tipo de dato abstracto BolsaLetras obtiene un vector en que se introduciden
+   objetos de la clase Letra de un conunto de letras en función de la probabilidad
+   que tenga cada letra de salir
+
+   El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
+   en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
+   asteriscos... 
+   
 */
 
 class BolsaLetras {
@@ -22,15 +26,15 @@ private:
 
 public:
 	/**
-	 *	@brief 	Constructor de la clase BolsaLetras
-	 *	@param	letras es el conjunto de letras del que se obtendrán las letras y sus respectivas probabilidades
+	 *	@brief 	Constructor por parámetros de BolsaLetras
+	 *	@param	letras Conjunto de letras del que se sacan las letras en función a su probabilidad
 	 */
 	BolsaLetras(ConjuntoLetras letras);
 
 	/**
-	 *	@brief	Obtiene un vector con letras aleatorias de longitud n
-	 *	@param 	n el número de letras aleatorias que se quiere obtener
-	 *	@return Un vector con n letras aleatorias
+	 *	@brief	Método para obtener el vector con letras aleatorias
+	 *	@param 	n Número de letras que tendrá el vector
+	 *	@return Obtenemos un vector con n letras aleatorias
 	 */
 	vector <Letra> obtenerLetras(int n);
 };

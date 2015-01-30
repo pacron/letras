@@ -14,9 +14,16 @@ using namespace std;
 /**
 	@brief T.D.A Diccionario
 
-	El TDA diccionario representa el conjunto de palabras válidas de un idioma y permite realizar
-	comprobaciones recurrentes como si una palabra dada existe o no, cuántas palabras existen
-	con un determinado número de letras...
+	El TDA diccionario representa las palabras que podemos obtener de un idioma origen, y permite realizar
+	comprobaciones tales cómo si una palabra existe o cuáles son las palabras de un tamaño determinado
+	existentes en ese idioma. Se representa a través de un árbol general en el que en cada nodo viene dado
+	por una estructura dada por una letra, y un bool que en caso de estar a true, nos indica que esa letra 
+	es el final de alguna palabra.
+
+	El invariante de representación podríamos rescatar el hecho de que las hojas siempre tienen que ser válidas
+	(bool a true). En el caso de la struct info, destacar que el char letra sólo puede venir dado por letras correctas,
+	es decir, entre a-z y entre A-Z pero no pueden poner asteriscos, puntos comas, etc
+
 */
 class Diccionario {
 private:
@@ -28,15 +35,30 @@ private:
 		char letra;
 		bool valida;
 
+		/**
+		 * @brief Constructor por parámetros del struct info
+		 * @param letra Letra que tendremos en la estructura
+		 * @param valida Variable booleana que indica si la letra es o no válida  	
+		*/
+
 		info (char letra, bool valida){
 			this->letra = letra;
 			this->valida = valida;
 		}
 
+		/**
+		 * @brief Constructor de la struct info a partir de una letra, poniendo válida a false
+		 * @param letra Letra que tendremos en la estructura				
+		*/
+
 		info(char letra){
 			this->letra = letra;
 			this->valida = false;
 		}
+
+		/**
+		 * @brief Constructor por defecto de la struct info				
+		*/
 
 		info(){}
 	};
@@ -46,25 +68,25 @@ private:
 	typedef ArbolGeneral<info>::Nodo Nodo;
 
 	/**
-	 * @brief De entre los hijos de un nodo, devuelve el nodo más cercano por la izquierda a la letra
-	 * @param letter La letra a la que acercarse por la izquierda
-	 * @param node el nodo de cuyos hijos se busca encontrar el más cercano
-	 * @return El nodo más cercano por la izquierda al nodo que debería contener la letra
+	 * @brief Devuelve el nodo donde queremos insertar la letra
+	 * @param letra Letra a la que nos acercamos
+	 * @param nod Nodo de referencia
+	 * @return Nodo donde queremos insertar la letra
 	 */
 	Nodo encontrarNodo(char letra, Nodo nod);
 
 	/**
-	 * @brief Crea o encuentra el nodo que corresponde a un caracter a partir del nodo especificado
-	 * @param letter la letra a la que se le busca hogar como hija de node
-	 * @param node El nodo en cuyos hijos se quiere situar la letra letter
-	 * @return el nodo (creado o encontrado) en el que se situará la letra
+	 * @brief Método para saber (o crear) el nodo que se corresponde a un carácter
+	 * @param letra Letra sobre la que realizamos la comprobación
+	 * @param nod Nodo de referencia
+	 * @return Nodo en que situamos la letra
 	 */
 	Nodo agregarLetra(char letra, Nodo nod);
 
 	/**
-	 *	@brief Crea un árbol que tenga como raiz un caracter letter y no tenga hijos
-	 *	@param letter El caracter de la raiz del nuevo árbol
-	 *	@return Un árbol que tenga como raiz el caracter letter y nada más
+	 *	@brief Método para crear un árbol en que sólo se tiene una ráiz con una letra
+	 *	@param letra Letra que se va a insertar
+	 *	@return El árbol que sólo tiene la raíz
 	 */
 	ArbolGeneral<info> crearSubarbol(char letra) {
 		info nuevo(letra);
@@ -72,13 +94,13 @@ private:
 	}
 
 	/**
-	 *	@brief Devuelve una lista con las palabras de cierto nivel de profundidad a partir de node
-	 *	@param level La profundidad a la que buscar desde node
-	 *	@param node El nodo desde el que buscar
-	 *	@param base_string El prefijo que se añadirá a los caracteres encontrados para formar palabras válidas
+	 *	@brief Método para obtener palabras que se encuentra a cierta profundidad
+	 *	@param nivel La profundidad a la que buscamos
+	 *	@param nod El nodo desde el que buscamos
+	 *	@param palabra_actual El prefijo que se añadirá a los caracteres encontrados para formar palabras válidas
 	 *	@return Una lista con las palabras de tal profundidad
 	 */
-	list<string> palabrasProfundidad(int level, Nodo nod, string palabra_actual);
+	list<string> palabrasProfundidad(int nivel, Nodo nod, string palabra_actual);
 
 	/**
 	 *	@brief Devuelve una lista de palabras que solo contengan letras de un conjunto a partir de un nodo
@@ -96,22 +118,22 @@ public:
 	Diccionario();
 
 	/**
-	 * @brief Añade una palabra al diccionario
-	 * @param word La palabra que será añadida al diccionario
+	 * @brief Método para añadir una palabra al diccionario
+	 * @param palabra La palabra que se añade
 	 */
-	void agregarPalabra(string word);
+	void agregarPalabra(string palabra);
 
 	/**
-	 *	@brief Comprueba si una palabra esta en el diccionario
-	 *	@param word La palabra cuya pertenencia al diccionario será comprobada
-	 *	@return true si está, false si no está
+	 *	@brief Método que comprueba si una palabra existe en el diccionario
+	 *	@param palabra La palabra que se comprueba
+	 *	@return true si existe
 	 */
-	bool existe(string word);
+	bool existe(string palabra);
 
 	/**
-	 * @brief Devuelve un vector con palabras de una longitud determinada
-	 * @param longitud la longitud de las palabras que serán devueltas
-	 * @return un vector con palabras de la longitud especificada
+	 * @brief Método que devuelven las palabras de una longitud dada
+	 * @param longitud Longitud de la que buscamos las palabras
+	 * @return Vector con las palabras de esa longitud
 	 */
 	vector<string> palabrasLongitud(int longitud);
 

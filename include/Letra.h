@@ -10,88 +10,133 @@ using namespace std;
 /**
 	@brief TDA Letra
 
-	Representa una letra dentro del juego letra, y por tanto tiene un caracter asociado a su cantidad
-	de apariciones y la cantidad de puntos que daría en caso de ser usada en el juego
+	El TDA Letra representa una letra, junto con las repeticiones que se dan de esa letra y la puntuación
+	que lleva asociada cada una de estas letras.
+
+	El invariante de representación de esta clase viene dado por todos aquellos valores correctos, es decir,
+	en el caso del carácter letra, las letras de la a-z y entre A-Z pero nada de caracteres cómo: comas, puntos,
+	asteriscos...
 
 */
 class Letra {
 private:
-	char letra;	///< El caracter de la letra
-	int repeticiones;	///< La cantidad de apariciones 
-	int puntuacion;	///< La puntuación que da
+	char letra;	
+	int repeticiones;	 
+	int puntuacion;	
 
 public:
 	/**
-	 *	@brief Constructor por defecto de la clase Letra
+	 *	@brief Constructor por defecto de Letra
 	 *
 	 */
 	Letra();
 
 	/**
-	 * @brief Constructor de la clase Letra a partir de sus datos miembro
-	 * @param letra El caracter asociado a la letra
-	 * @param repeticiones La cantidad de apariciones de la letra
-	 * @param puntuacion La puntuación que daría la letra
+	 * @brief Constructor por parámetros de la clase Letra
+	 * @param letra letra que se representa
+	 * @param repeticiones Números de veces que aparece la letra
+	 * @param puntuacion La puntuación asociada a la letra.
 	 */
 	Letra(char letra, int repeticiones, int puntuacion);
 
 	/**
-	 * @brief getter del caracter de la letra
-	 * @return el caracter asociado a la letra
+	 * @brief Método para extraer la letra (sólo el carácter)
+	 * @return la letra (sólo el carácter)
 	 */
 	char getLetra() const;
 
 	/**
-	 * @brief Getter de las apariciones de la letra
-	 * @return el número de apariciones de la letra
+	 * @brief Método para extraer el número de veces que se repite la letra 
+	 * @return Número de apariciones de la letra
 	 */
 	int getRepeticiones() const;
 
 	/**
-	 * @brief Getter de la puntuación de la letra
-	 * @return el número de puntos de la letra
+	 * @brief Método para extraer la puntuación asociada a la letra
+	 * @return La puntuación de la letra
 	 */
 	int getPuntuacion() const;
 
 	/**
-	 * @brief Setter del caracter de la letra
-	 * @param letter El nuevo caracter que se asociará a la letra
+	 * @brief Método para asociar carácter a la letra
+	 * @param letra El nuevo caracter que se dará a la letra
 	 */
 	void setLetra(char letra);
 
 	/**
-	 * @brief Setter de las apariciones de la letra
-	 * @param letter El nuevo número de apariciones de la letra
+	 * @brief Método para incluir el número de apariciones de la letra
+	 * @param repeticiones El nuevo número de apariciones de la letra
 	 */
 	void setRepeticiones(int repeticiones);
 
 	/**
-	 * @brief Setter del caracter de la letra
-	 * @param letter El nuevo caracter que se asociará a la letra
+	 * @brief Método para incluir la puntuación de la letra
+	 * @param puntuacion La nueva puntuación de la letra
 	 */
 	void setPuntuacion(int puntuacion);
 
 	/**
-	 * @brief Método para comparar una letra con otra 
-	 * @param otra la letra con la que se comparará this
-	 * @return true en caso this < otra, false en otro
+	 * @brief Sobrecarga del operador <
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea menor que la otra (orden alfabético)
 	 */
 	bool operator<(const Letra &otra) const;
 
 	/**
-	* @brief Sobrecarga del operador >
-	*/
+	 * @brief Sobrecarga del operador >
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea mayor que la otra (orden alfabético)
+	 */
+
 	bool operator>(const Letra &otra) const;
+
+	/**
+	 * @brief Sobrecarga del operador <=
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea menor igual que la otra (orden alfabético)
+	 */
 
 	bool operator<=(const Letra & otra) const;
 
+	/**
+	 * @brief Sobrecarga del operador >=
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea mayor igual que la otra (orden alfabético)
+	 */
+
 	bool operator>=(const Letra &otra) const;
+
+	/**
+	 * @brief Sobrecarga del operador ==
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea igual que la otra
+	 */
 
 	bool operator==(const Letra &otra) const;
 
+	/**
+	 * @brief Sobrecarga del operador !=
+	 * @param otra la letra con la que se compara
+	 * @return true en caso de que nuestra letra sea distinta que la otra
+	 */
+
 	bool operator!=(const Letra &otra) const;
 
+	/**
+	 * @brief Sobrecarga del operador de salida <<
+	 * @param out Flujo de salida
+	 * @param l Letra a la que se le da salida
+	 * @return El flujo de salida que corresponda
+	 */
+
 	friend ostream& operator<<(ostream &out, const Letra l);
+
+	/**
+	 * @brief Sobrecarga del operador de entrada >>
+	 * @param in Flujo de entrada
+	 * @param l Letra a la que se le da entrada
+	 * @return El flujo de entrada que corresponda
+	 */
 
 	friend istream& operator>>(istream &in, Letra &l);
 };
