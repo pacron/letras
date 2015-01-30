@@ -134,12 +134,12 @@ istream& operator>>(istream &in, Diccionario &diccionario){
 	return in;
 }
 
-vector<string> Diccionario::obtenerPalabrasMejorPuntuacion(const vector<Letra>& letras, map <char,int> puntuaciones){
+vector<string> Diccionario::obtenerPalabrasMejorPuntuacion(const vector<Letra>& letras, map <char,int> puntuaciones, int &puntuacion_maxima){
 
 	vector<string> palabras = obtenerPalabras(letras);
 	vector<string> resultado;
 
-	int puntuacion_maxima = 0;
+	puntuacion_maxima = 0;
 	int size = palabras.size();
 
 	for(int i = 0; i < size; ++i){
@@ -169,10 +169,13 @@ vector<string> Diccionario::obtenerPalabrasMejorPuntuacion(const vector<Letra>& 
 vector<string> Diccionario::obtenerPalabras(const vector<Letra>& letras) {
 
 	multiset<char> conjunto_letras;
-
+	char letra;
 	int size = letras.size();
-	for(int i = 0; i < size; ++i)
-		conjunto_letras.insert(letras[i].getLetra());
+	
+	for(int i = 0; i < size; ++i){
+		letra = tolower(letras[i].getLetra());
+		conjunto_letras.insert(letra);
+	}
 
 	list<string> palabras_validas = obtenerPalabrasCoincidentes(conjunto_letras, palabras.raiz(), "");
 
@@ -184,8 +187,9 @@ list<string> Diccionario::obtenerPalabrasCoincidentes(multiset<char>& letras, No
 
 	list<string> resultado;
 
-	if (actual == NULL)
+	if (actual == NULL){
 		return resultado;
+	}
 
 	if (actual->etiqueta.valida){
 		resultado.push_back(palabra_actual);
@@ -194,13 +198,13 @@ list<string> Diccionario::obtenerPalabrasCoincidentes(multiset<char>& letras, No
 	Nodo hijo_actual = actual->hijo;
 
 	while(hijo_actual != NULL){
-		set<char>::iterator letra = letras.find(actual->etiqueta.letra);
+		multiset<char>::iterator letra_actual = letras.find(hijo_actual->etiqueta.letra);
 
 
-		if (letra != letras.end()){	
-			letras.erase(letra);	
+		if (letra_actual != letras.end()){	
+			letras.erase(letra_actual);	
 
-			list<string> resultado_actual = obtenerPalabrasCoincidentes(letras, hijo_actual, palabra_actual + *letra);
+			list<string> resultado_actual = obtenerPalabrasCoincidentes(letras, hijo_actual, palabra_actual + *letra_actual);
 
 			resultado.splice(resultado.end(), resultado_actual);
 
